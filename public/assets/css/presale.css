@@ -1,0 +1,114 @@
+.presale_box {
+    height: auto;
+    border-radius: 30px;
+    padding: 20px;
+    background-color: #04001bf1;
+}
+
+.presale_title {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 800;
+    word-spacing: 5px;
+}
+
+.presale_title>span {
+    background: linear-gradient(270deg, #5E2FF4 0%, #8CA7FF 17.47%, #E4DAFF 39.54%, #C570FB 60.49%, #C3B1FE 84.44%, #5E2FF4 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.presale_counter{
+    width: 80px;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 100%;
+    background-color: #1F1F48;
+}
+.presale_counter > h1{
+    font-size: 25px;
+}
+.presale_counter > p{
+    font-size: 15px;
+}
+.presale_progress_hint {
+    color: black;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.presale_buy_token {
+    color: #3C12D4;
+    font-size: 14px;
+    font-weight: 600;
+    border-radius: 30px;
+    padding: 5px 20px 5px 10px;
+    background-color: #acacac;
+    cursor: pointer;
+}
+
+.presale_buy_token.active {
+    color: #ffffff;
+    background-color: #3C12D4;
+}
+
+.presale_buy_token>img {
+    width: 40px;
+    height: 40px;
+    object-fit: scale-down;
+}
+.presale_label{
+    font-weight: 500;
+}
+.presale_input{
+    padding: 0px 10px 0px 15px;
+    border: 3px solid #3C12D4 !important;
+    border-radius: 30px !important;
+    background: #ffffff !important;
+}
+.presale_input > input{
+    color: #1F1F48;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 0px !important;
+    background: transparent !important;
+}
+.presale_input > img{
+    width: 40px;
+    height: 40px;
+}
+.presale_price{
+    color: black;
+    font-size: 15px;
+    font-weight: 900;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: #b8aeda;
+    cursor: pointer;
+}
+.presale_price.active{
+    color: #ffffff;
+    background-color: #3C12D4;
+}
+.presale_error{
+    color: #f93c3c;
+}
+.presale_btn{
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 600;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    background-color: #3C12D4;
+}
+.presale_audit_img{
+    width: auto;
+    height: 50px;
+    border-radius: 20px;
+    padding: 10px 10px;
+    background-color: #656565;
+}
