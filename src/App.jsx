@@ -1,4 +1,3 @@
-import { Provider } from "react-redux";
 
 import Footer from "./components/Footer";
 import Header from "./components/Header";

@@ -1,63 +1,63 @@
-import { useWallet } from "../context/walletContext";
+import { useWalletContext } from "../context/walletContext";
 
 function Header() {
   const { isConnected, walletAddress, connectWallet, disconnectWallet } =
-    useWallet();
+    useWalletContext();
 
   return (
     <>
       {/* <!-- header start --> */}
-      <header class="site-header header--transparent ico-header">
-        <div class="header__main-wrap stricky">
-          <div class="container mxw_1640">
-            <div class="header__main ul_li_between">
-              <div class="header__left ul_li">
-                <div class="header__logo">
+      <header className="site-header header--transparent ico-header">
+        <div className="header__main-wrap stricky">
+          <div className="container mxw_1640">
+            <div className="header__main ul_li_between">
+              <div className="header__left ul_li">
+                <div className="header__logo">
                   <a href="index.html">
-                    <img src="assets/img/logo/logo.svg" alt="" />
+                    <img src="assets/img/logo/logo.svg" alt="Logo" />
                   </a>
                 </div>
               </div>
-              <div class="main-menu__wrap ul_li navbar navbar-expand-xl">
-                <nav class="main-menu collapse navbar-collapse">
+              <div className="main-menu__wrap ul_li navbar navbar-expand-xl">
+                <nav className="main-menu collapse navbar-collapse">
                   <ul>
                     <li>
-                      <a class="scrollspy-btn" href="#about">
-                        about
+                      <a className="scrollspy-btn" href="#about">
+                        About
                       </a>
                     </li>
                     <li>
-                      <a class="scrollspy-btn" href="#tokenomics">
+                      <a className="scrollspy-btn" href="#tokenomics">
                         Tokenomics
                       </a>
                     </li>
                     <li>
-                      <a class="scrollspy-btn" href="#roadmap">
+                      <a className="scrollspy-btn" href="#roadmap">
                         Roadmap
                       </a>
                     </li>
                     <li>
-                      <a class="scrollspy-btn" href="#team">
+                      <a className="scrollspy-btn" href="#team">
                         Team
                       </a>
                     </li>
                     <li>
-                      <a class="scrollspy-btn" href="#faq">
-                        Faq
+                      <a className="scrollspy-btn" href="#faq">
+                        FAQ
                       </a>
                     </li>
                     <li>
-                      <a class="scrollspy-btn" href="#contact">
-                        contact
+                      <a className="scrollspy-btn" href="#contact">
+                        Contact
                       </a>
                     </li>
                   </ul>
                 </nav>
               </div>
-              <div class="header__action ul_li">
-                <div class="d-xl-none">
-                  <a class="header__bar hamburger_menu" href="/">
-                    <div class="header__bar-icon">
+              <div className="header__action ul_li">
+                <div className="d-xl-none">
+                  <a className="header__bar hamburger_menu" href="/">
+                    <div className="header__bar-icon">
                       <span></span>
                       <span></span>
                       <span></span>
@@ -65,49 +65,46 @@ function Header() {
                     </div>
                   </a>
                 </div>
-                <div class="header__language">
-                  <div class="dropdown">
+                <div className="header__language">
+                  <div className="dropdown">
                     <button
-                      class="dropdown-toggle"
+                      className="dropdown-toggle"
                       type="button"
                       id="dropdownMenuButton1"
                       data-bs-toggle="dropdown"
                       aria-haspopup="true"
                       aria-expanded="false">
                       <img src="assets/img/icon/us_flag.png" alt="" />
-                      ENGLISH <i class="fas fa-chevron-down"></i>
+                      ENGLISH <i className="fas fa-chevron-down"></i>
                     </button>
                     <div
-                      class="dropdown-menu"
+                      className="dropdown-menu"
                       aria-labelledby="dropdownMenuButton1">
-                      <a class="dropdown-item" href="index.html">
-                        <img src="assets/img/icon/chn_flag.png" alt="" />
-                        China
+                      <a className="dropdown-item" href="index.html">
+                        <img src="assets/img/icon/chn_flag.png" alt="" /> China
                       </a>
-                      <a class="dropdown-item" href="index.html">
-                        <img src="assets/img/icon/rsa_flag.png" alt="" />
-                        Russia
+                      <a className="dropdown-item" href="index.html">
+                        <img src="assets/img/icon/rsa_flag.png" alt="" /> Russia
                       </a>
-                      <a class="dropdown-item" href="index.html">
-                        <img src="assets/img/icon/in_flag.png" alt="" />
-                        India
+                      <a className="dropdown-item" href="index.html">
+                        <img src="assets/img/icon/in_flag.png" alt="" /> India
                       </a>
                     </div>
                   </div>
                 </div>
-                <div class="header__account">
+                <div className="header__account">
                   {isConnected ? (
                     <button
                       className="presale_btn"
                       type="button"
-                      onClick={() => disconnectWallet()}>
-                      {walletAddress}...
+                      onClick={disconnectWallet}>
+                      {walletAddress.slice(0, 10)}...
                     </button>
                   ) : (
                     <button
                       className="presale_btn"
                       type="button"
-                      onClick={() => connectWallet()}>
+                      onClick={connectWallet}>
                       Connect Wallet
                     </button>
                   )}
@@ -120,55 +117,55 @@ function Header() {
       {/* <!-- header end --> */}
 
       {/* <!-- slide bar start --> */}
-      <aside class="slide-bar">
-        <div class="close-mobile-menu">
-          <a class="tx-close" href="/">
+      <aside className="slide-bar">
+        <div className="close-mobile-menu">
+          <a className="tx-close" href="/">
             x
           </a>
         </div>
 
         {/* <!-- side-mobile-menu start --> */}
-        <nav class="side-mobile-menu">
-          <a class="header__logo mb-30" href="#!">
-            <img src="assets/img/logo/logo.svg" alt="" />
+        <nav className="side-mobile-menu">
+          <a className="header__logo mb-30" href="#!">
+            <img src="assets/img/logo/logo.svg" alt="Logo" />
           </a>
-          <div class="header-mobile-search">
+          <div className="header-mobile-search">
             <form role="search" method="get" action="#">
               <input type="text" placeholder="Search Keywords" />
               <button type="submit">
-                <i class="ti-search"></i>
+                <i className="ti-search"></i>
               </button>
             </form>
           </div>
           <ul id="mobile-menu-active">
             <li>
-              <a class="scrollspy-btn" href="#about">
-                about
+              <a className="scrollspy-btn" href="#about">
+                About
               </a>
             </li>
             <li>
-              <a class="scrollspy-btn" href="#tokenomics">
+              <a className="scrollspy-btn" href="#tokenomics">
                 Tokenomics
               </a>
             </li>
             <li>
-              <a class="scrollspy-btn" href="#roadmap">
+              <a className="scrollspy-btn" href="#roadmap">
                 Roadmap
               </a>
             </li>
             <li>
-              <a class="scrollspy-btn" href="#team">
+              <a className="scrollspy-btn" href="#team">
                 Team
               </a>
             </li>
             <li>
-              <a class="scrollspy-btn" href="#faq">
-                Faq
+              <a className="scrollspy-btn" href="#faq">
+                FAQ
               </a>
             </li>
             <li>
-              <a class="scrollspy-btn" href="#contact">
-                contact
+              <a className="scrollspy-btn" href="#contact">
+                Contact
               </a>
             </li>
           </ul>
@@ -176,7 +173,7 @@ function Header() {
         {/* <!-- side-mobile-menu end --> */}
       </aside>
 
-      <div class="body-overlay"></div>
+      <div className="body-overlay"></div>
       {/* <!-- slide bar end --> */}
     </>
   );
