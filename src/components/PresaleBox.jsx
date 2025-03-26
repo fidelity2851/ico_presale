@@ -2,23 +2,23 @@ import { Contract } from "ethers";
 import { useEffect, useState } from "react";
 import ICO_ContractAbi from "../abis/ico_abi.json";
 import { useWalletContext } from "../context/walletContext";
-import useICOData from "../hooks/icoData";
+// import useICOData from "../hooks/icoData";
 import useTokenData from "../hooks/tokenData";
 
 function PresaleBox() {
   const { isConnected, rpcProvider, walletAddress } = useWalletContext();
-  const {
-    amountRaised,
-    startTime,
-    endTime,
-    currentStage,
-    tokenPurchased,
-    purchasedLimit,
-    salesStage,
-    isPaused,
-    isFinalized,
-  } = useICOData();
-  const { name, symbol, decimals } = useTokenData();
+  // const {
+  //   amountRaised,
+  //   startTime,
+  //   endTime,
+  //   currentStage,
+  //   tokenPurchased,
+  //   purchasedLimit,
+  //   salesStage,
+  //   isPaused,
+  //   isFinalized,
+  // } = useICOData();
+  const { name, symbol } = useTokenData();
 
   const [contract, setContract] = useState(null);
   const [tokenBought, setTokenBought] = useState(0);
@@ -30,18 +30,18 @@ function PresaleBox() {
       rpcProvider
     );
     setContract(icoContract);
-  }, []);
+  }, [rpcProvider]);
 
   useEffect(() => {
+    async function getPurchasedToken() {
+      const amount = await contract.tokensPurchasedByAddress(walletAddress);
+      setTokenBought(Number(amount));
+    }
+
     if (isConnected) {
       getPurchasedToken();
     }
-  }, [isConnected]);
-
-  async function getPurchasedToken() {
-    const amount = await contract.tokensPurchasedByAddress(walletAddress);
-    setTokenBought(Number(amount));
-  }
+  }, [contract, walletAddress, isConnected]);
 
   return (
     <div className="hero__countdown">

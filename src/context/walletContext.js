@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
 
 const WalletContext = createContext();
@@ -15,31 +15,7 @@ export const WalletProvider = ({ children }) => {
 
     const [signer, setSigner] = useState(null);
 
-    // Automatically check if user was connected before
-    useEffect(() => {
-        if (window.ethereum && walletState?.isConnected && walletState?.savedAddress) {
-            connectWallet(); // Reconnect wallet
-        }
-    }, []);
-
-    async function switchNetwork(chainId) {
-        try {
-            await window.ethereum.request({
-                method: "wallet_switchEthereumChain",
-                params: [{ chainId: "0x" + chainId.toString(16) }], // Chain ID must be in HEX format
-            });
-
-            console.log("Network switched successfully!");
-        } catch (error) {
-            console.error("Error switching network:", error);
-            // If network is not added, prompt to add it
-            if (error.code === 4902) {
-                console.error("Network not added yet!");
-            }
-        }
-    }
-
-    async function connectWallet() {
+    const connectWallet = useCallback(async () => {
         if (!window.ethereum) {
             alert("Browser Wallet not found. Please install it.");
             return;
@@ -67,7 +43,29 @@ export const WalletProvider = ({ children }) => {
         } catch (error) {
             console.error("Wallet connection failed:", error);
         }
-    };
+    }, []);
+
+
+
+
+    async function switchNetwork(chainId) {
+        try {
+            await window.ethereum.request({
+                method: "wallet_switchEthereumChain",
+                params: [{ chainId: "0x" + chainId.toString(16) }], // Chain ID must be in HEX format
+            });
+
+            console.log("Network switched successfully!");
+        } catch (error) {
+            console.error("Error switching network:", error);
+            // If network is not added, prompt to add it
+            if (error.code === 4902) {
+                console.error("Network not added yet!");
+            }
+        }
+    }
+
+
 
     const disconnectWallet = () => {
         localStorage.removeItem("walletState");
@@ -76,6 +74,13 @@ export const WalletProvider = ({ children }) => {
         setSigner(null);
         setWalletAddress(null);
     }
+
+    // Automatically check if user was connected before
+    useEffect(() => {
+        if (window.ethereum && walletState?.isConnected && walletState?.savedAddress) {
+            connectWallet(); // Reconnect wallet
+        }
+    }, [connectWallet, walletState?.isConnected, walletState?.savedAddress]);
 
     return (
         <WalletContext.Provider value={{ isConnected, rpcProvider, signer, walletAddress, connectWallet, disconnectWallet }}>

@@ -21,7 +21,7 @@ function useTokenData() {
             rpcProvider
         );
         setContract(icoContract);
-    }, []);
+    }, [rpcProvider]);
 
     useEffect(() => {
 

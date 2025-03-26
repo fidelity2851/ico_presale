@@ -4,7 +4,7 @@ import ICO_ContractAbi from "../abis/ico_abi.json";
 import { useWalletContext } from "../context/walletContext";
 
 function useICOData() {
-    const { rpcProvider, signer } = useWalletContext();
+    const { rpcProvider } = useWalletContext();
     const [contract, setContract] = useState(null);
 
 
@@ -12,7 +12,7 @@ function useICOData() {
     const [startTime, setStartTime] = useState(0);
     const [endTime, setEndTime] = useState(0);
     const [currentStage, setCurrentStage] = useState(0);
-    const [tokenPurchased, setTokenPurchased] = useState(0);
+    const [tokenPurchased,] = useState(0);
     const [purchasedLimit, setPurchasedLimit] = useState(0);
     const [salesStage, setSalesStage] = useState(null);
     const [isPaused, setIsPaused] = useState(false);
@@ -25,7 +25,7 @@ function useICOData() {
             rpcProvider
         );
         setContract(icoContract);
-    }, []);
+    }, [rpcProvider]);
 
     useEffect(() => {
         if (!contract) return;
