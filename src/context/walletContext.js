@@ -1,5 +1,9 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useCallback, useContext, useEffect, useState } from "react";
 import { ethers } from "ethers";
+import { Contract } from "ethers";
+import ICO_ContractAbi from "../abis/ico_abi.json";
+
 
 const WalletContext = createContext();
 
@@ -9,6 +13,8 @@ export const WalletProvider = ({ children }) => {
 
     const walletState = JSON.parse(localStorage.getItem("walletState"));
     const rpcProvider = new ethers.JsonRpcProvider(process.env.REACT_APP_ALCHEMY_RPC_ENDPOINT);
+
+    const [contract, setContract] = useState(null);
 
     const [isConnected, setIsConnected] = useState(false);
     const [walletAddress, setWalletAddress] = useState(null);
@@ -77,13 +83,25 @@ export const WalletProvider = ({ children }) => {
 
     // Automatically check if user was connected before
     useEffect(() => {
-        if (window.ethereum && walletState?.isConnected && walletState?.savedAddress) {
+
+        const icoContract = new Contract(
+            process.env.REACT_APP_ICO_CONTRACT_ADRESS,
+            ICO_ContractAbi,
+            rpcProvider
+        );
+        setContract(icoContract);
+
+        if (window.ethereum && walletState?.isConnected) {
             connectWallet(); // Reconnect wallet
         }
-    }, [connectWallet, walletState?.isConnected, walletState?.savedAddress]);
+        
+    }, []);
+
+
+
 
     return (
-        <WalletContext.Provider value={{ isConnected, rpcProvider, signer, walletAddress, connectWallet, disconnectWallet }}>
+        <WalletContext.Provider value={{ isConnected, rpcProvider, signer, walletAddress, contract, connectWallet, disconnectWallet }}>
             {children}
         </WalletContext.Provider>
     );

@@ -15,7 +15,7 @@ function Footer() {
                   tokens before the main ICO.
                 </p>
                 <form action="#">
-                  <input type="text" placeholder="coindox@gmail.com" />
+                  <input type="text" placeholder="FranCode@gmail.com" />
                   <button>
                     <i className="fas fa-paper-plane"></i>
                   </button>
@@ -65,7 +65,7 @@ function Footer() {
           <div className="footer__bottom ul_li_between mt-50">
             <div className="footer__logo mt-20">
               <a href="index.html">
-                <img src="assets/img/logo/logo.svg" alt="" />
+                <img src="assets/img/logo/logo.svg" alt="" width={200} />
               </a>
             </div>
             <ul className="footer__social ul_li mt-20">
@@ -101,7 +101,7 @@ function Footer() {
           <div className="container">
             <div className="footer__copyright-inner ul_li_between">
               <div className="footer__copyright-text mt-15">
-                Copyright © 2023 coindox. All rights reserved.
+                Copyright © 2025 FranCode. All rights reserved.
               </div>
               <ul className="footer__links ul_li_right mt-15">
                 <li>

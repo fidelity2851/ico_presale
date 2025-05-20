@@ -226,7 +226,7 @@ function HomePage() {
           <div className="row">
             <div className="col">
               <div className="token-info__title sec-title mb-95 text-center ps-0">
-                <h5 className="sec-title__subtitle">ICO coindox Token</h5>
+                <h5 className="sec-title__subtitle">ICO FranCode Token</h5>
                 <h2 className="sec-title__title">
                   ICO Tokens <br /> Details and Sale
                 </h2>
@@ -336,7 +336,7 @@ function HomePage() {
                   </li>
                 </ul>
                 <div className="token__info mt-40">
-                  <h2>1 CNL = 0.0013 BTC</h2>
+                  <h2>1 FCD = $0.01</h2>
                   <p>
                     A portion of the total token supply is often allocated as
                     reserved <br /> tokens. These tokens are set aside for the
@@ -872,7 +872,7 @@ function HomePage() {
       <section id="contact" className="ico-contact pos-rel">
         <div className="container">
           <div className="ico-contact__wrap">
-            <h2 className="title">Contact with coindox</h2>
+            <h2 className="title">Connect with FranCode</h2>
             <form action="#!">
               <div className="row">
                 <div className="col-lg-6">

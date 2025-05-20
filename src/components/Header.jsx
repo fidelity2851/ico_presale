@@ -14,7 +14,7 @@ function Header() {
               <div className="header__left ul_li">
                 <div className="header__logo">
                   <a href="index.html">
-                    <img src="assets/img/logo/logo.svg" alt="Logo" />
+                    <img src="assets/img/logo/logo.svg" alt="Logo" width={200} />
                   </a>
                 </div>
               </div>
